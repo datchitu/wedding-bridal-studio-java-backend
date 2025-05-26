@@ -21,8 +21,6 @@ public class VoucherDTOResponse {
     private Date expireDate;
     private Boolean deleted;
 
-//    private List<Map<String, Object>> transactions;
-
     public VoucherDTOResponse(Voucher voucher) {
         this.id = voucher.getId();
         this.name = voucher.getName();
@@ -31,10 +29,5 @@ public class VoucherDTOResponse {
         this.quantity = voucher.getQuantity();
         this.expireDate = voucher.getExpireDate();
         this.deleted = voucher.getDeleted();
-//        if (!ObjectUtils.isEmpty(voucher.getTransactions())) {
-//            for (Transaction transaction : voucher.getTransactions()) {
-//                this.transactions.add(Map.of("transactionId", transaction.getId(), "transactionDeleted", transaction.getDeleted()));
-//            }
-//        }
     }
 }

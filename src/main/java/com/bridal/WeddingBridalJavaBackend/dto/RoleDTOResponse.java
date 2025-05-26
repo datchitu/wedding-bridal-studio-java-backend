@@ -16,11 +16,9 @@ public class RoleDTOResponse {
     private Long id;
     private String roleName;
     private List<Map<String, Object>> users;
-
     public RoleDTOResponse(Role role) {
         this.id = role.getId();
         this.roleName = role.getRoleName();
-
         this.users = new ArrayList<>();
         if(!ObjectUtils.isEmpty(role.getUsers())){
             for (User user : role.getUsers()) {

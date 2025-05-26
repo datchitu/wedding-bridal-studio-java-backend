@@ -41,8 +41,8 @@ public class UserDTOResponse {
         this.gender = user.getGender();
         this.identityCard = user.getIdentityCard();
         this.deleted = user.getDeleted();
-
         this.transactionUsers = new ArrayList<>();
+
         if(!ObjectUtils.isEmpty(user.getTransactionsUsers())) {
             for (TransactionUser transactionUser : user.getTransactionsUsers()) {
                 this.transactionUsers.add(Map.of(

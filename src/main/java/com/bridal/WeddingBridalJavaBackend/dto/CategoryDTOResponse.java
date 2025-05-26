@@ -16,14 +16,11 @@ public class CategoryDTOResponse {
     private Long id;
     private String name;
     private Boolean deleted;
-
     private List<Map<String, Object>> services;
-
     public CategoryDTOResponse(Category category){
         this.id = category.getId();
         this.name = category.getName();
         this.deleted = category.getDeleted();
-
         this.services = new ArrayList<>();
         if(!ObjectUtils.isEmpty(category.getServices())){
             for(Service service : category.getServices()){

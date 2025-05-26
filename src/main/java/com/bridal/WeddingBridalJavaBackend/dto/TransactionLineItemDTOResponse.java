@@ -14,7 +14,6 @@ public class TransactionLineItemDTOResponse {
     private Integer quantity;
     private Double totalPrice;
     private Boolean deleted;
-
     private Long transactionId;
     private Long variantServiceId;
     private String variantServiceName;
@@ -30,7 +29,6 @@ public class TransactionLineItemDTOResponse {
             Transaction transaction = transactionLineItem.getTransaction();
             this.transactionId = transaction.getId();
         }
-
         if(!ObjectUtils.isEmpty(transactionLineItem.getVariantService())) {
             VariantService variantService = transactionLineItem.getVariantService();
             this.variantServiceId = variantService.getId();

@@ -16,9 +16,7 @@ public class ServiceDTOResponse {
     private Long id;
     private String name;
     private Boolean deleted;
-
     private List<Map<String, Object>> variantServices;
-
     public ServiceDTOResponse(Service service){
         this.id = service.getId();
         this.name = service.getName();

@@ -22,18 +22,17 @@ public class TransactionUserDTOResponse {
     private Boolean deleted;
     private Long userId;
     private Long transactionId;
+
     public TransactionUserDTOResponse(TransactionUser transactionUser) {
         this.id = transactionUser.getId();
         this.performDatetime = transactionUser.getPerformDatetime();
         this.status = transactionUser.getStatus();
         this.deleted = transactionUser.getDeleted();
         this.createdAt = transactionUser.getCreatedAt();
-
         if (!ObjectUtils.isEmpty(transactionUser.getUser())) {
             User user = transactionUser.getUser();
             this.userId = user.getId();
         }
-
         if (!ObjectUtils.isEmpty(transactionUser.getTransaction())) {
             Transaction transaction = transactionUser.getTransaction();
             this.transactionId = transaction.getId();

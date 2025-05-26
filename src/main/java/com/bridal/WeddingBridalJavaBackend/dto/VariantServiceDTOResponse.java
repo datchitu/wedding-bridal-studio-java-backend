@@ -16,7 +16,6 @@ public class VariantServiceDTOResponse {
     private String avatar;
     private Integer quantity;
     private Boolean deleted;
-
     private Long serviceId;
     private String serviceName;
 

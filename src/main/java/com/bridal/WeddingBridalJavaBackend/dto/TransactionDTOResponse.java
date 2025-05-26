@@ -24,7 +24,6 @@ public class TransactionDTOResponse {
     private Boolean deleted;
     private Timestamp createdAt;
     private Timestamp paidAt;
-
     private Long voucherId;
     private String voucherName;
     private Integer voucherDiscount;

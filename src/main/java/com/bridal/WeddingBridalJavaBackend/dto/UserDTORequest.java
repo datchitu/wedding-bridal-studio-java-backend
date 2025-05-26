@@ -13,8 +13,6 @@ import java.util.Map;
 public class UserDTORequest {
     private String firstName;
     private String lastName;
-//    private String email;
-//    private String password;
     private String phone;
     private String avatar;
     private String address;
@@ -24,9 +22,6 @@ public class UserDTORequest {
     public UserDTORequest(Map<String, Object> user) {
         this.firstName = user.get("firstName").toString();
         this.lastName = user.get("lastName").toString();
-//        this.email = user.get("email").toString();
-//        this.password = user.get("password").toString();
-//        this.phone = user.get("phone").toString();
         this.avatar = user.get("avatar").toString();
         this.address = user.get("address").toString();
         this.gender = Boolean.parseBoolean(user.get("gender").toString());

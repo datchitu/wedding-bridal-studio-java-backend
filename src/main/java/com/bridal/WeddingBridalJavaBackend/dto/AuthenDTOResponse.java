@@ -10,5 +10,4 @@ import org.springframework.util.ObjectUtils;
 public class AuthenDTOResponse {
     private String token;
     private String message;
-//    private UserDTOResponse user;
 }
