@@ -108,19 +108,16 @@ public class ServiceController extends BaseRestController{
                     || ObjectUtils.isEmpty(newService.get("categoriesId"))){
                 return super.error(ResponseCode.NO_PARAM.getCode(), ResponseCode.NO_PARAM.getMessage());
             }
-
             Service foundService = this.serviceService.findByName(newService.get("name").toString()).orElse(null);
             if(!ObjectUtils.isEmpty(foundService)){
                 return super.error(ResponseCode.DATA_ALREADY_EXISTS.getCode(),
                         ResponseCode.DATA_ALREADY_EXISTS.getMessage());
             }
-
             Long categoryId = Long.parseLong(newService.get("categoriesId").toString());
             Category foundCategory = this.categoryService.findCategoryById(categoryId);
             if (ObjectUtils.isEmpty(foundCategory)) {
                 return super.error(ResponseCode.CATEGORY_NOT_FOUND.getCode(), ResponseCode.CATEGORY_NOT_FOUND.getMessage());
             }
-
             Service insertedService = serviceService.addService(newService, foundCategory);
             return super.success(new ServiceDTOResponse(insertedService));
         }catch(Exception e){
@@ -138,12 +135,10 @@ public class ServiceController extends BaseRestController{
                     || ObjectUtils.isEmpty(newService.get("name"))){
                 return super.error(ResponseCode.NO_PARAM.getCode(), ResponseCode.NO_PARAM.getMessage());
             }
-
             Service foundService = this.serviceService.findServiceById(id);
             if (ObjectUtils.isEmpty(foundService)) {
                 return super.error(ResponseCode.SERVICE_NOT_FOUND.getCode(), ResponseCode.SERVICE_NOT_FOUND.getMessage());
             }
-
             Service updatedService = serviceService.updateService(id, newService);
             return super.success(new ServiceDTOResponse(updatedService));
         }catch(Exception e){

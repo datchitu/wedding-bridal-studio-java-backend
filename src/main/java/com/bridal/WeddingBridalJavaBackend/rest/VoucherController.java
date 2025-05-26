@@ -31,7 +31,6 @@ public class VoucherController extends BaseRestController{
     VoucherService voucherService;
 
     Date today = Date.from(new Date().toInstant());
-
     DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 
     @GetMapping("")

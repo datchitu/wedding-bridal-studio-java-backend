@@ -24,10 +24,8 @@ import java.util.stream.Collectors;
 public class TransactionLineItemController extends BaseRestController{
     @Autowired
     private TransactionLineItemService transactionLineItemService;
-
     @Autowired
     private VariantServiceService variantServiceService;
-
     @Autowired
     private TransactionService transactionService;
 

@@ -29,10 +29,8 @@ import java.util.stream.Collectors;
 public class UserController extends BaseRestController{
     @Autowired
     private UserService userService;
-
     @Autowired
     private UserRepository userRepository;
-
     @Autowired
     private PasswordEncoder passwordEncoder;
 
@@ -80,7 +78,6 @@ public class UserController extends BaseRestController{
             if (ObjectUtils.isEmpty(newUser)) {
                 return super.error(ResponseCode.NO_PARAM.getCode(), ResponseCode.NO_PARAM.getMessage());
             }
-
             if (ObjectUtils.isEmpty(newUser.get("firstName"))
                     || ObjectUtils.isEmpty(newUser.get("lastName"))
                     || ObjectUtils.isEmpty(newUser.get("email"))
@@ -89,13 +86,11 @@ public class UserController extends BaseRestController{
                     || ObjectUtils.isEmpty(newUser.get("user_role"))) {
                 return super.error(ResponseCode.NO_PARAM.getCode(), ResponseCode.NO_PARAM.getMessage());
             }
-
             User foundUser = this.userService.findByEmail(newUser.get("email").toString()).orElse(null);
             if (!ObjectUtils.isEmpty(foundUser)) {
                 return super.error(ResponseCode.DATA_ALREADY_EXISTS.getCode(),
                         ResponseCode.DATA_ALREADY_EXISTS.getMessage());
             }
-
             User insertedUser = userService.addUser(newUser);
             if (!ObjectUtils.isEmpty(insertedUser)) {
                 return super.success(new UserDTOResponse(insertedUser));
@@ -169,12 +164,10 @@ public class UserController extends BaseRestController{
                     || ObjectUtils.isEmpty(userDTORequest.getIdentityCard())) {
                 return super.error(ResponseCode.NO_PARAM.getCode(), ResponseCode.NO_PARAM.getMessage());
             }
-
             User foundUser = this.userService.findByEmail(email).orElse(null);
             if (ObjectUtils.isEmpty(foundUser)) {
                 return super.error(ResponseCode.USER_NOT_FOUND.getCode(), ResponseCode.USER_NOT_FOUND.getMessage());
             }
-
             User updatedUser = userService.updateUser(email, newUser);
             if (!ObjectUtils.isEmpty(updatedUser)) {
                 return super.success(new UserDTOResponse(updatedUser));

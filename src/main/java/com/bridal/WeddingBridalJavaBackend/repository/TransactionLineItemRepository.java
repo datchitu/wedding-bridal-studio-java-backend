@@ -9,9 +9,7 @@ import java.util.List;
 @Repository
 public interface TransactionLineItemRepository extends JpaRepository<TransactionLineItem, Long> {
     List<TransactionLineItem> findAllByDeleted(boolean deleted);
-
     List<TransactionLineItem> findAllByTransaction_Id(Long transactionId);
-
     List<TransactionLineItem> findAllByTransaction_IdAndDeleted(Long transactionId, boolean deleted);
 
 }

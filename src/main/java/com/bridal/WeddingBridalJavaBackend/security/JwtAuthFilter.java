@@ -33,7 +33,6 @@ public class JwtAuthFilter extends OncePerRequestFilter {
             token = authHeader.substring(authorPrefix.length());
             email = JwtUtils.extractEmail(token);
         }
-
         if (email != null && SecurityContextHolder.getContext().getAuthentication() == null) {
             UserDetails userDetails = userDetailsService.loadUserByUsername(email);
             if (JwtUtils.validateToken(token, userDetails)) {

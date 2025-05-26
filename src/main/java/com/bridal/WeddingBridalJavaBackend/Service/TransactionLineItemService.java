@@ -8,10 +8,6 @@ import java.util.List;
 import java.util.Map;
 
 public interface TransactionLineItemService {
-
-//
-//    List<TransactionLineItem> findAllTransactionLineItemByTransactionId(Long transactionId);
-
     List<TransactionLineItem> getAllTransactionLineItem();
 
     List<TransactionLineItem> getAllTransactionLineItemByDeleted(Boolean deleted);

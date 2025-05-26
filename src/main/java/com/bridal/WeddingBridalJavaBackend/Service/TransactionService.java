@@ -8,7 +8,6 @@ import java.util.Map;
 import java.util.Optional;
 
 public interface TransactionService {
-
     Transaction findTransactionById(Long id);
 
     Transaction findTransactionByIdAndDeleted(Long id, Boolean deleted);

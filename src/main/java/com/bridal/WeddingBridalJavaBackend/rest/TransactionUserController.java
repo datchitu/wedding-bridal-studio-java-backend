@@ -26,15 +26,12 @@ import java.util.stream.Collectors;
 public class TransactionUserController extends BaseRestController{
     @Autowired
     TransactionUserService transactionUserService;
-
     @Autowired
     UserService userService;
-
     @Autowired
     TransactionService transactionService;
 
     Date today = Date.from(new Date().toInstant());
-
     DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 
     @PreAuthorize("hasAnyRole('ADMIN', 'STAFF')")
@@ -128,7 +125,6 @@ public class TransactionUserController extends BaseRestController{
             } else {
                 foundTransactionUsers = this.transactionUserService.findAllTransactionUserByUserIdAndDeleted(userId, true);
             }
-
             int startIndex = (int) pageable.getOffset();
             int endIndex = Math.min((startIndex + pageable.getPageSize()), foundTransactionUsers.size());
             List<TransactionUser> transactionUsers = foundTransactionUsers.subList(startIndex, endIndex);
@@ -159,7 +155,6 @@ public class TransactionUserController extends BaseRestController{
             if (!orders.isEmpty()) {
                 pageable = PageRequest.of(offset, limit, Sort.by(orders));
             }
-
             Transaction foundTransaction = this.transactionService.findTransactionById(transactionId);
             if (ObjectUtils.isEmpty(foundTransaction)) {
                 return super.error(ResponseCode.TRANSACTION_NOT_FOUND.getCode(), ResponseCode.TRANSACTION_NOT_FOUND.getMessage());
@@ -172,7 +167,6 @@ public class TransactionUserController extends BaseRestController{
             } else {
                 foundTransactionUsers = this.transactionUserService.findAllTransactionUserByTransactionIdAndDeleted(transactionId, true);
             }
-
             int startIndex = (int) pageable.getOffset();
             int endIndex = Math.min((startIndex + pageable.getPageSize()), foundTransactionUsers.size());
             List<TransactionUser> transactionUsers = foundTransactionUsers.subList(startIndex, endIndex);
@@ -206,7 +200,6 @@ public class TransactionUserController extends BaseRestController{
         return super.error(ResponseCode.NO_CONTENT.getCode(), ResponseCode.NO_CONTENT.getMessage());
     }
 
-//    @PreAuthorize("hasAnyRole('ADMIN','USER','STAFF')")
     @PostMapping("")
     public ResponseEntity<?> addTransactionUser(@RequestBody(required = true) Map<String, Object> newTransactionUser){
         try{

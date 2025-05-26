@@ -22,7 +22,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthenController extends BaseRestController {
     @Autowired
     private AuthenticationManager authenticationManager;
-
     @Autowired
     private UserRepository userRepository;
 
@@ -31,10 +30,7 @@ public class AuthenController extends BaseRestController {
         try {
             this.authenticationManager
                     .authenticate(new UsernamePasswordAuthenticationToken(authen.getEmail(), authen.getPassword()));
-
             String token = JwtUtils.generateToken(authen.getEmail());
-//            UserDTOResponse user = new UserDTOResponse(userRepository.findByEmail(authen.getEmail()).orElse(null));
-//            AuthenDTOResponse response = new AuthenDTOResponse(token, "Successful login!", user);
             AuthenDTOResponse response = new AuthenDTOResponse(token, "Successful login!");
             return success(response);
         } catch (Exception e) {

@@ -91,7 +91,6 @@ public class VariantServiceController extends BaseRestController{
             if (!orders.isEmpty()) {
                 pageable = PageRequest.of(offset, limit, Sort.by(orders));
             }
-
             Service foundService = this.serviceService.findServiceById(serviceId);
             if (ObjectUtils.isEmpty(foundService)) {
                 return super.error(ResponseCode.SERVICE_NOT_FOUND.getCode(), ResponseCode.SERVICE_NOT_FOUND.getMessage());
@@ -104,7 +103,6 @@ public class VariantServiceController extends BaseRestController{
             } else {
                 foundVariantServices = this.variantServiceService.findAllVariantServiceByServiceIdAndDeleted(serviceId, true);
             }
-
             int startIndex = (int) pageable.getOffset();
             int endIndex = Math.min((startIndex + pageable.getPageSize()), foundVariantServices.size());
             List<VariantService> variantServices = foundVariantServices.subList(startIndex, endIndex);
@@ -140,13 +138,11 @@ public class VariantServiceController extends BaseRestController{
                 return super.error(ResponseCode.DATA_ALREADY_EXISTS.getCode(),
                         ResponseCode.DATA_ALREADY_EXISTS.getMessage());
             }
-
             Long serviceId = Long.parseLong(newVariantService.get("servicesId").toString());
             Service foundService = this.serviceService.findServiceById(serviceId);
             if (ObjectUtils.isEmpty(foundService)) {
                 return super.error(ResponseCode.SERVICE_NOT_FOUND.getCode(), ResponseCode.SERVICE_NOT_FOUND.getMessage());
             }
-
             VariantService insertedVariantService = variantServiceService.addVariantService(newVariantService, foundService);
             return super.success(new VariantServiceDTOResponse(insertedVariantService));
         }catch(Exception e){
@@ -176,7 +172,6 @@ public class VariantServiceController extends BaseRestController{
             if (ObjectUtils.isEmpty(foundVariantService)) {
                 return super.error(ResponseCode.VARIANT_SERVICE_NOT_FOUND.getCode(), ResponseCode.VARIANT_SERVICE_NOT_FOUND.getMessage());
             }
-
             VariantService updatedVariantService = variantServiceService.updateVariantService(id, newVariantService);
             return super.success(new VariantServiceDTOResponse(updatedVariantService));
         }catch(Exception e){

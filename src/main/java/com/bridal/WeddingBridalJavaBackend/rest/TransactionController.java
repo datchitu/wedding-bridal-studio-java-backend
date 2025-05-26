@@ -27,18 +27,14 @@ import java.util.stream.Collectors;
 public class TransactionController extends BaseRestController{
     @Autowired
     private TransactionService transactionService;
-
     @Autowired
     private VariantServiceService variantServiceService;
-
     @Autowired
     private VoucherService voucherService;
-
     @Autowired
     private UserService userService;
 
     Date today = Date.from(new Date().toInstant());
-
     DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 
     @PreAuthorize("hasAnyRole('ADMIN', 'STAFF')")
@@ -267,7 +263,6 @@ public class TransactionController extends BaseRestController{
         }
         return super.error(ResponseCode.NO_CONTENT.getCode(), ResponseCode.NO_CONTENT.getMessage());
     }
-
         @GetMapping("/get-transaction-by-false-status")
     public ResponseEntity<?> getTransactionByFalseStatus() {
         Transaction foundTransaction = this.transactionService.findTransactionByFalseStatusFirst();
@@ -320,7 +315,6 @@ public class TransactionController extends BaseRestController{
             if (ObjectUtils.isEmpty(foundTransaction)) {
                 createEmpyTransaction();
                 foundTransaction = this.transactionService.findTransactionByFalseStatusFirst();
-//                return super.error(ResponseCode.TRANSACTION_NOT_FOUND.getCode(), ResponseCode.TRANSACTION_NOT_FOUND.getMessage());
             }
             Transaction insertedToTransaction = transactionService.addVariantServiceToTransaction(foundVariantService, quantity);
             return super.success(new TransactionDTOResponse(insertedToTransaction));

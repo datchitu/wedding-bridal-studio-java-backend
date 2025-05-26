@@ -14,6 +14,5 @@ public interface VariantServiceRepository extends JpaRepository<VariantService, 
     List<VariantService> findByNameContaining(String name);
     List<VariantService> findByNameContainingAndDeleted(String name, Boolean deleted);
     List<VariantService> findByService_IdAndDeleted(Long servicesId, Boolean deleted);
-
     List<VariantService> findAllByDeleted(boolean deleted);
 }

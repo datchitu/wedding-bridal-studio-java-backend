@@ -9,14 +9,6 @@ import java.util.Optional;
 @Repository
 public interface CategoryRepository extends JpaRepository<Category, Long> {
     Optional<Category> findByName(String name);
-//    Option 1
     List<Category> findByNameContaining(String name);
-//    Option 2
-//    List<Category> findByNameLike(String name);
-
-//    Option 1
-//    List<Category> findAllNotDeleted();
-//    List<Category> findAllDeleted();
-//    Option 2
     List<Category> findAllByDeleted(boolean deleted);
 }
